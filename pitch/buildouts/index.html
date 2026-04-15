@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GigMax | Organic UGC Programs for Consumer Apps</title>
+<meta name="description" content="GigMax builds and runs high-volume organic UGC programs for consumer apps. Live by day 15.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gigmax.xyz/pitch/buildouts/">
+<meta property="og:title" content="GigMax | Organic UGC Programs for Consumer Apps">
+<meta property="og:description" content="We build and run high-volume organic UGC programs for consumer apps.">
+<meta property="og:image" content="https://gigmax.xyz/pitch/buildouts/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GigMax | Organic UGC Programs for Consumer Apps">
+<meta name="twitter:description" content="We build and run high-volume organic UGC programs for consumer apps.">
+<meta name="twitter:image" content="https://gigmax.xyz/pitch/buildouts/assets/og-image.png">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg: #F4EFE4;
+  --bg-card: #FAF6ED;
+  --bg-card-alt: #EFE8D8;
+  --gold: #9E7325;
+  --gold-light: #BC9338;
+  --gold-dim: rgba(184,137,46,0.12);
+  --text: #2A251C;
+  --text-dim: #6B6357;
+  --white: #FFFFFF;
+  --green: #3E8E41;
+  --red: #B84C4C;
+  --red-dim: rgba(184,76,76,0.10);
+  --blue: #4A6B8A;
+  --line: rgba(42,37,28,0.08);
+  --line-soft: rgba(42,37,28,0.05);
+}
+html, body {
+  height:100%; overflow:hidden; background: var(--bg);
+  font-family: 'DM Sans', sans-serif; color: var(--text);
+  background-image:
+    linear-gradient(rgba(42,37,28,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42,37,28,0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+  background-attachment: fixed;
+}
+
+/* SLIDE CONTAINER */
+.deck { position:relative; width:100%; height:100%; }
+.slide {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  padding: 60px 80px;
+  opacity:0; transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  pointer-events:none;
+  background: transparent;
+  overflow-y:auto;
+}
+.slide.active {
+  opacity:1; transform: translateY(0); pointer-events:all; z-index:2;
+}
+.slide.exit-up {
+  opacity:0; transform: translateY(-30px); pointer-events:none;
+}
+
+/* TYPOGRAPHY */
+h1 { font-family:'Playfair Display',serif; font-weight:600; line-height:1.1; }
+h2 { font-family:'Playfair Display',serif; font-weight:500; line-height:1.2; }
+h3 { font-family:'DM Sans',sans-serif; font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:2px; color:var(--gold); }
+p { line-height:1.7; color:var(--text-dim); font-size:16px; }
+
+/* NAV */
+.nav {
+  position:fixed; bottom:30px; left:50%; transform:translateX(-50%);
+  display:flex; gap:8px; z-index:100; padding:10px 16px;
+  background:rgba(250,246,237,0.92); backdrop-filter:blur(12px);
+  border-radius:40px; border:1px solid var(--line);
+  box-shadow: 0 4px 18px rgba(42,37,28,0.06);
+}
+.nav-dot {
+  width:10px; height:10px; border-radius:50%;
+  background:rgba(42,37,28,0.18); cursor:pointer;
+  transition: all 0.3s;
+}
+.nav-dot.active { background:var(--gold); box-shadow:0 0 8px rgba(184,137,46,0.4); transform:scale(1.3); }
+
+.slide-counter {
+  position:fixed; top:24px; right:32px; z-index:100;
+  font-size:13px; color:var(--text-dim); letter-spacing:1px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* FADE-IN CHILDREN */
+.slide.active .fi { animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) both; }
+.fi-1 { animation-delay: 0.1s !important; }
+.fi-2 { animation-delay: 0.25s !important; }
+.fi-3 { animation-delay: 0.4s !important; }
+.fi-4 { animation-delay: 0.55s !important; }
+.fi-5 { animation-delay: 0.7s !important; }
+.fi-6 { animation-delay: 0.85s !important; }
+@keyframes fadeInUp {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* PROBLEM GRID: staggered rounded tiles */
+.problem-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:22px 28px;
+  max-width:880px; margin:0 auto;
+}
+.problem-tile {
+  position:relative; background:var(--bg-card);
+  border:1px solid var(--line); border-radius:22px;
+  padding:26px 28px 24px; text-align:left;
+  box-shadow:0 6px 22px rgba(42,37,28,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.problem-tile:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(42,37,28,0.10); }
+.problem-grid .problem-tile:nth-child(1) { transform:translateY(-14px); }
+.problem-grid .problem-tile:nth-child(2) { transform:translateY(14px); }
+.problem-grid .problem-tile:nth-child(3) { transform:translateY(-14px); }
+.problem-grid .problem-tile:nth-child(4) { transform:translateY(14px); }
+.problem-grid .problem-tile:hover { transform:translateY(-3px) !important; }
+.problem-num {
+  position:absolute; top:-14px; left:24px;
+  width:36px; height:36px; border-radius:50%;
+  background:var(--bg); border:1.5px solid rgba(184,76,76,0.45);
+  color:var(--red); font-family:'Playfair Display',serif;
+  font-size:15px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 2px 10px rgba(42,37,28,0.06);
+}
+.problem-tile h4 {
+  font-family:'Playfair Display',serif; font-weight:600; font-size:19px;
+  color:var(--text); margin:6px 0 10px; line-height:1.3;
+}
+.problem-tile p { font-size:14px; color:var(--text-dim); line-height:1.6; }
+
+/* LEARNING / PROBLEM CARDS */
+.learning-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:820px; margin:0 auto;
+}
+.learning-card {
+  background:var(--bg-card); border:1px solid var(--line); border-radius:12px;
+  padding:22px 24px; text-align:left; box-shadow:0 3px 14px rgba(42,37,28,0.05);
+}
+.learning-card.highlight { border:1px solid rgba(184,137,46,0.35); background:rgba(184,137,46,0.06); }
+.learning-card.problem { border-left:3px solid var(--red); }
+.learning-card.problem .learning-title { color:var(--red); }
+.learning-title {
+  font-size:11px; text-transform:uppercase; letter-spacing:1.5px;
+  font-weight:700; color:var(--text-dim); margin-bottom:10px;
+}
+.learning-title.gold { color:var(--gold); }
+.learning-card p { font-size:14px; color:var(--text); line-height:1.6; }
+.learning-card h4 {
+  font-family:'Playfair Display',serif; font-weight:600; font-size:18px;
+  color:var(--text); margin-bottom:8px; line-height:1.3;
+}
+.learning-card .problem-icon {
+  font-size:20px; display:inline-block; margin-bottom:10px;
+}
+
+/* STAT CARDS */
+.stat-row { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; }
+.stat-card {
+  background: var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:12px; padding:24px 20px; text-align:center;
+  min-width:150px; flex:1 1 0;
+  box-shadow: 0 2px 12px rgba(42,37,28,0.04);
+}
+.stat-card .num {
+  font-family:'Playfair Display',serif; font-size:34px; font-weight:700; color:var(--gold);
+  font-variant-numeric: tabular-nums;
+  letter-spacing:-0.01em;
+  line-height:1;
+  display:block;
+}
+.unit {
+  font-size:0.65em; font-weight:600; letter-spacing:0.02em;
+  margin-left:0.05em; position:relative; top:-0.18em; display:inline-block;
+}
+.unit-prefix {
+  font-size:0.65em; font-weight:600; margin-right:0.04em;
+  position:relative; top:-0.18em; display:inline-block;
+}
+.stat-card .label { font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1.5px; margin-top:10px; }
+
+/* COMPARISON TABLE */
+.comp-table { width:100%; max-width:960px; border-collapse:separate; border-spacing:0; }
+.comp-table th {
+  padding:14px 18px; font-size:13px; text-transform:uppercase; letter-spacing:1.5px;
+  border-bottom:2px solid rgba(184,137,46,0.3);
+  color:var(--text-dim); font-weight:500; text-align:left;
+}
+.comp-table th.gold { color:var(--gold); }
+.comp-table td {
+  padding:14px 18px; font-size:14px; border-bottom:1px solid var(--line-soft);
+  vertical-align:top; line-height:1.6; color:var(--text);
+}
+.comp-table td.row-label { font-weight:600; color:var(--text); }
+.comp-table td.gold-bg {
+  background:rgba(184,137,46,0.08);
+  color:var(--gold); font-weight:600;
+}
+.comp-table tr:last-child td { border-bottom:none; }
+.comp-table tr:last-child td.gold-bg { border-bottom-left-radius:10px; border-bottom-right-radius:10px; }
+
+/* DOT VIS */
+.dot-container { display:flex; gap:70px; align-items:flex-start; justify-content:center; margin-top:32px; }
+.dot-group { text-align:center; }
+.dot-headline {
+  display:flex; align-items:baseline; justify-content:center; gap:14px; margin-bottom:20px;
+}
+.dot-num {
+  font-family:'Playfair Display',serif; font-size:72px; font-weight:700;
+  font-variant-numeric: tabular-nums; line-height:1; letter-spacing:-0.02em;
+}
+.dot-unit { font-size:18px; color:var(--text-dim); font-weight:500; }
+.dot-grid {
+  display:flex; flex-wrap:wrap; gap:7px; justify-content:center;
+  max-width:260px; margin:0 auto; min-height:80px; align-content:center;
+}
+.dot {
+  width:14px; height:14px; border-radius:50%;
+  animation: dotPop 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.dot-gray { background:rgba(42,37,28,0.25); }
+.dot-gold { background:var(--gold); box-shadow: 0 0 6px rgba(184,137,46,0.3); }
+.dot-caption { font-size:12px; margin-top:14px; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; }
+.dot-vs {
+  font-family:'Playfair Display',serif; font-style:italic;
+  font-size:24px; color:var(--text-dim); align-self:center;
+}
+.dot-legend {
+  font-size:12px; color:var(--text-dim); letter-spacing:2px;
+  text-transform:uppercase; font-weight:500;
+}
+
+/* THESIS BULLETS */
+.thesis-list {
+  list-style:none; text-align:left; max-width:720px; margin:0 auto;
+  display:flex; flex-direction:column; gap:14px;
+}
+.thesis-list li {
+  position:relative; padding-left:28px; font-size:16px; color:var(--text); line-height:1.55;
+}
+.thesis-list li::before {
+  content:''; position:absolute; left:0; top:10px;
+  width:8px; height:8px; border-radius:50%; background:var(--gold);
+}
+
+/* CHECK LIST */
+.check-list {
+  list-style:none; display:flex; flex-direction:column; gap:14px;
+}
+.check-list li {
+  display:flex; gap:12px; align-items:flex-start;
+  font-size:15px; color:var(--text); line-height:1.55;
+}
+.check-list .check {
+  flex-shrink:0; width:22px; height:22px; border-radius:6px;
+  background:rgba(62,142,65,0.10);
+  border:1px solid rgba(62,142,65,0.30);
+  color:var(--green); font-size:13px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  margin-top:1px;
+}
+
+@keyframes dotPop {
+  from { opacity:0; transform:scale(0); }
+  to { opacity:1; transform:scale(1); }
+}
+
+/* IMAGES */
+.img-frame {
+  border-radius:12px; overflow:hidden; border:1px solid var(--line);
+  box-shadow: 0 8px 28px rgba(42,37,28,0.10);
+  background: var(--bg-card);
+}
+.img-frame img { display:block; width:100%; height:auto; }
+
+.case-img-row {
+  display:flex; gap:20px; justify-content:center; align-items:stretch;
+  max-width:900px; margin:32px auto 0;
+}
+.case-img-row .img-frame { flex:1 1 0; min-width:0; }
+
+/* IVORY MIND STATS */
+.ivory-stats {
+  display:grid; grid-template-columns: 1fr 2.4fr; gap:16px;
+  max-width:820px; margin:0 auto;
+}
+.ivory-stats .stat-card { padding:30px 24px; }
+.ivory-stats .stat-card .num { font-size:34px; }
+.stat-wide {
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+}
+.stat-wide .num {
+  font-family:'Playfair Display',serif; font-weight:600;
+  font-size:30px !important; color:var(--text); line-height:1.2;
+  letter-spacing:-0.005em;
+}
+.stat-accent { color:var(--gold); font-style:italic; }
+.viral-link {
+  color:inherit; text-decoration:none;
+  border-bottom:2px solid rgba(184,137,46,0.5);
+  padding-bottom:1px; transition: border-color 0.2s ease, color 0.2s ease;
+}
+.viral-link:hover { color:var(--gold); border-bottom-color:var(--gold); }
+
+/* PRICING (next steps) */
+.pricing-card .price-single {
+  font-family:'Playfair Display',serif;
+  font-size:64px; font-weight:700; color:var(--gold);
+  font-variant-numeric: tabular-nums;
+  letter-spacing:-0.02em; line-height:1;
+}
+.pricing-card .price-sub {
+  font-size:13px; color:var(--text-dim);
+  margin-top:10px; letter-spacing:1px;
+  text-transform:uppercase; font-weight:500;
+}
+.includes-list {
+  list-style:none; text-align:left;
+  display:grid; grid-template-columns:1fr 1fr;
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
+  gap:14px 32px; align-items:start;
+  max-width:660px; margin:24px auto 0;
+}
+.includes-list li {
+  position:relative; padding-left:22px; font-size:14px;
+  color:var(--text); line-height:1.5;
+}
+.includes-list li::before {
+  content:'✓'; position:absolute; left:0; top:0;
+  color:var(--gold); font-weight:700; font-size:14px;
+}
+.img-placeholder {
+  background:var(--bg-card); border:1px dashed rgba(42,37,28,0.20);
+  border-radius:12px; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  color:var(--text-dim); font-size:13px; text-align:center;
+  padding:28px; min-height:280px;
+  box-shadow: 0 4px 18px rgba(42,37,28,0.04);
+}
+.img-placeholder .ph-icon {
+  font-size:28px; margin-bottom:10px; color:var(--gold);
+}
+
+/* HEADSHOT */
+.headshot {
+  width:160px; height:160px; border-radius:50%; overflow:hidden;
+  border:3px solid var(--gold); box-shadow: 0 4px 24px rgba(184,137,46,0.22);
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-card-alt));
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif; font-size:48px; color:var(--gold); font-weight:600;
+}
+.headshot img { width:100%; height:100%; object-fit:cover; }
+
+/* BRAND BAR */
+.brand-bar {
+  display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-start; align-items:center;
+  padding:8px 0;
+}
+.brand-bar span {
+  font-size:13px; font-weight:600;
+  padding:7px 14px; border-radius:999px;
+  letter-spacing:0.01em;
+  border:1px solid transparent;
+}
+.brand-bar .tag-cashapp    { background:#C2E3AF; color:#2E5620; border-color:#A4CC8E; }
+.brand-bar .tag-headspace  { background:#F8C98A; color:#6F3E10; border-color:#E8B064; }
+.brand-bar .tag-coursehero { background:#B3D2E6; color:#1E4461; border-color:#96BFDA; }
+.brand-bar .tag-supercoffee{ background:#D6B878; color:#523718; border-color:#BD9E5E; }
+.brand-bar .tag-a0dev      { background:#98AECE; color:#223655; border-color:#7C94B5; }
+.brand-bar .tag-zencastr   { background:#E3C6C6; color:#5E2626; border-color:#CBA5A5; }
+.brand-bar .tag-ivory      { background:#EAE2CF; color:#5B4A1E; border-color:#CFC2A2; }
+
+/* TESTIMONIAL */
+.testimonial-box {
+  background:var(--bg-card); border-radius:12px;
+  border:1px solid var(--line); border-left:3px solid var(--gold);
+  padding:26px 30px;
+  max-width:100%; font-style:italic; color:var(--text);
+  line-height:1.75; font-size:14px;
+  box-shadow: 0 4px 18px rgba(42,37,28,0.05);
+}
+.testimonial-author { font-style:normal; color:var(--gold); margin-top:12px; font-weight:600; font-size:14px; }
+
+/* PRICING */
+.pricing-card {
+  background:var(--bg-card); border:1px solid rgba(184,137,46,0.25);
+  border-radius:16px; padding:36px 40px; max-width:720px; width:100%;
+  box-shadow: 0 10px 32px rgba(42,37,28,0.06);
+}
+
+/* CREATIVE CATS */
+.cat-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; max-width:700px; width:100%; }
+.cat-card {
+  background:var(--bg-card); border-radius:10px; padding:18px 22px;
+  border:1px solid var(--line);
+  box-shadow: 0 2px 10px rgba(42,37,28,0.04);
+}
+.cat-card .cat-title { font-size:13px; font-weight:700; color:var(--gold); margin-bottom:6px; text-transform:uppercase; letter-spacing:1px; }
+.cat-card .cat-desc { font-size:13px; color:var(--text-dim); line-height:1.55; }
+
+/* LAYOUT HELPERS */
+.two-col { display:flex; gap:60px; align-items:center; width:100%; max-width:1040px; }
+.two-col.start { align-items:flex-start; }
+.col { flex:1; }
+.text-center { text-align:center; }
+.mt-12 { margin-top:12px; }
+.mt-20 { margin-top:20px; }
+.mt-24 { margin-top:24px; }
+.mt-32 { margin-top:32px; }
+.mt-40 { margin-top:40px; }
+.mb-8 { margin-bottom:8px; }
+.mb-12 { margin-bottom:12px; }
+.mb-16 { margin-bottom:16px; }
+.mb-20 { margin-bottom:20px; }
+.mb-24 { margin-bottom:24px; }
+.mb-32 { margin-bottom:32px; }
+.max-w { max-width:800px; }
+.gold { color:var(--gold); }
+.green { color:var(--green); }
+.red { color:var(--red); }
+
+/* GRADIENT ACCENT */
+.grad-line {
+  width:60px; height:3px; border-radius:2px;
+  background:linear-gradient(90deg, var(--gold), var(--gold-light));
+  margin-bottom:20px;
+}
+
+/* HORIZONTAL TIMELINE */
+.timeline-h { display:flex; gap:0; align-items:flex-start; max-width:960px; width:100%; position:relative; }
+.timeline-h::before {
+  content:''; position:absolute; top:18px; left:40px; right:40px; height:2px;
+  background:linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+}
+.tl-step { flex:1; text-align:center; position:relative; padding:0 10px; }
+.tl-dot {
+  width:12px; height:12px; border-radius:50%; background:var(--gold);
+  margin:12px auto 16px; position:relative; z-index:2;
+  box-shadow:0 0 8px rgba(212,168,67,0.4);
+}
+.tl-label { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--gold); font-weight:700; margin-bottom:6px; }
+.tl-title { font-family:'Playfair Display',serif; font-weight:600; font-size:15px; color:var(--text); margin-bottom:6px; line-height:1.25; }
+.tl-desc { font-size:12px; color:var(--text-dim); line-height:1.5; }
+
+/* VERTICAL TIMELINE */
+.timeline-v {
+  display:flex; flex-direction:column; gap:0;
+  position:relative; padding-left:32px;
+}
+.timeline-v::before {
+  content:''; position:absolute; left:7px; top:8px; bottom:8px;
+  width:2px; background:linear-gradient(180deg, var(--gold), var(--gold-light), var(--gold));
+  border-radius:2px;
+}
+.tv-step { position:relative; padding:12px 0 12px 20px; }
+.tv-step::before {
+  content:''; position:absolute; left:-28px; top:18px;
+  width:12px; height:12px; border-radius:50%;
+  background:var(--gold);
+  border:2px solid var(--bg);
+  box-shadow:0 0 0 3px rgba(184,137,46,0.15);
+}
+.tv-step .tv-num {
+  font-size:11px; letter-spacing:2px; color:var(--gold);
+  text-transform:uppercase; font-weight:700; margin-bottom:4px;
+}
+.tv-step .tv-title {
+  font-family:'Playfair Display',serif; font-weight:600; font-size:17px;
+  color:var(--text); margin-bottom:4px; line-height:1.3;
+}
+.tv-step .tv-desc { font-size:14px; color:var(--text-dim); line-height:1.55; }
+
+/* SLIDE-SPECIFIC */
+.slide-title-u { position:relative; }
+.slide-title-u::after {
+  content:''; position:absolute; bottom:-16px; left:0;
+  width:50px; height:3px; background:var(--gold); border-radius:2px;
+}
+.slide-title-u.center::after { left:50%; transform:translateX(-50%); }
+
+/* BADGE */
+.badge {
+  display:inline-block; padding:6px 14px; border-radius:20px; font-size:12px;
+  font-weight:600; letter-spacing:1px; text-transform:uppercase;
+  background:var(--gold-dim); color:var(--gold); border:1px solid rgba(184,137,46,0.28);
+}
+.badge.red {
+  background:var(--red-dim); color:var(--red); border-color:rgba(184,76,76,0.28);
+}
+
+/* CLICKABLE IMAGES + LIGHTBOX */
+.clickable-img { cursor:zoom-in; transition: transform 0.25s ease, box-shadow 0.25s ease; position:relative; }
+.clickable-img:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(42,37,28,0.18); }
+.clickable-img::after {
+  content: '\2922'; position:absolute; top:10px; right:12px;
+  width:28px; height:28px; border-radius:50%;
+  background: rgba(250,246,237,0.9); color: var(--text);
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; font-weight:600; opacity:0; transition: opacity 0.2s ease;
+  pointer-events:none; backdrop-filter: blur(6px);
+  border: 1px solid var(--line);
+}
+.clickable-img:hover::after { opacity:1; }
+
+.lightbox {
+  position:fixed; inset:0; z-index:1000;
+  background: rgba(20,17,12,0.92);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1);
+  cursor:zoom-out; padding:40px;
+}
+.lightbox.open { opacity:1; pointer-events:all; }
+.lightbox img {
+  max-width:92vw; max-height:88vh; width:auto; height:auto;
+  border-radius:8px; box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  transform:scale(0.96); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.lightbox.open img { transform:scale(1); }
+.lightbox-close {
+  position:absolute; top:24px; right:32px;
+  width:40px; height:40px; border-radius:50%;
+  background:rgba(255,255,255,0.12); color:#fff; border:none;
+  font-size:22px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition: background 0.2s ease;
+}
+.lightbox-close:hover { background:rgba(255,255,255,0.22); }
+
+/* RESPONSIVE */
+@media(max-width:900px) {
+  .slide { padding:40px 28px; }
+  .two-col { flex-direction:column; gap:28px; }
+  .learning-grid { grid-template-columns:1fr; }
+  .dot-container { flex-direction:column; gap:28px; }
+  .timeline-h { flex-direction:column; gap:20px; }
+  .timeline-h::before { display:none; }
+  .tl-step { text-align:left; padding:0 0 0 20px; border-left:2px solid var(--gold); }
+  .tl-dot { margin:0 0 8px -6px; }
+}
+</style>
+</head>
+<body>
+
+<div class="slide-counter"><span id="counter">01 / 11</span></div>
+
+<div class="deck" id="deck">
+
+<!-- SLIDE 1: TITLE -->
+<div class="slide active" data-slide="0">
+  <div class="text-center">
+    <h3 class="fi fi-1 mb-24">Organic UGC Programs for Consumer Apps</h3>
+    <h1 class="fi fi-2" style="font-size:84px; letter-spacing:-0.02em;">Gig<span class="gold">Max</span></h1>
+    <p class="fi fi-3 mt-20" style="font-size:20px; color:var(--text); max-width:620px; margin:20px auto 0;">We build and run high-volume organic UGC programs for consumer apps.</p>
+  </div>
+</div>
+
+<!-- SLIDE 2: WHO'S BUILDING -->
+<div class="slide" data-slide="1">
+  <div class="two-col">
+    <div class="col" style="flex:0 0 auto; text-align:center;">
+      <div class="headshot fi fi-1"><img src="/pitch/buildouts/assets/raza.jpeg" alt="Raza North"></div>
+      <p class="fi fi-2 mt-12" style="font-size:18px; font-weight:600; color:var(--text);">Raza North</p>
+      <p class="fi fi-2" style="font-size:13px; color:var(--text-dim);">Founder, GigMax</p>
+    </div>
+    <div class="col">
+      <h3 class="fi fi-1 mb-8">Who's Building This</h3>
+      <h2 class="fi fi-2 mb-24" style="font-size:30px;">1M+ followers. 1B+ views.<br><span class="gold">11 years</span> in the creator economy.</h2>
+      <p class="fi fi-3 mb-16">I built my own audience first: 1M+ followers and 1B+ views, learning what actually performs on social. As a UGC creator, I applied that playbook for <strong style="color:var(--text); font-weight:700;">CashApp, CourseHero, HeadSpace, and SuperCoffee</strong>, driving thousands of downloads and millions of views.</p>
+      <p class="fi fi-4 mb-24">Separately, I now build and run UGC programs for consumer apps. I've run campaigns for <strong style="color:var(--text); font-weight:700;">a0.dev, Chatbase, Jabali.ai, Zencastr,</strong> and <strong style="color:var(--text); font-weight:700;">Ivory Mind</strong>.</p>
+      <div class="brand-bar fi fi-5">
+        <span class="tag-cashapp">CashApp</span>
+        <span class="tag-headspace">HeadSpace</span>
+        <span class="tag-coursehero">CourseHero</span>
+        <span class="tag-supercoffee">SuperCoffee</span>
+        <span class="tag-a0dev">a0.dev</span>
+        <span class="tag-zencastr">Zencastr</span>
+        <span class="tag-ivory">Ivory Mind</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: THESIS -->
+<div class="slide" data-slide="2">
+  <div class="text-center" style="max-width:1040px; margin:0 auto;">
+    <h3 class="fi fi-1 mb-8">The Thesis</h3>
+    <h2 class="fi fi-2 mb-16" style="font-size:44px;">Organic Content Volume Wins in <span class="gold">2026</span></h2>
+
+    <div class="dot-container fi fi-3">
+      <div class="dot-group">
+        <div class="dot-headline">
+          <span class="dot-num" style="color:var(--text-dim);">30</span>
+          <span class="dot-unit">posts/month</span>
+        </div>
+        <div class="dot-grid" id="dots-small"></div>
+        <p class="dot-caption" style="color:var(--red);">= A guess</p>
+      </div>
+      <div class="dot-vs">vs</div>
+      <div class="dot-group">
+        <div class="dot-headline">
+          <span class="dot-num gold">400</span>
+          <span class="dot-unit">posts/month</span>
+        </div>
+        <div class="dot-grid" id="dots-large"></div>
+        <p class="dot-caption" style="color:var(--green);">= A system to split test at scale</p>
+      </div>
+    </div>
+    <p class="dot-legend fi fi-4 mt-20">1 dot = 10 posts</p>
+
+    <ul class="thesis-list fi fi-5 mt-40">
+      <li>The best-performing ads already look like organic videos.</li>
+      <li>Viewership depends on attention, not audience size.</li>
+      <li>A winning format that works once will work repeatedly.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SLIDE 4: THE PROBLEM -->
+<div class="slide" data-slide="3">
+  <div style="max-width:980px; width:100%;">
+    <div class="text-center">
+      <span class="badge red fi fi-1 mb-16">The Problem</span>
+      <h2 class="fi fi-2 mb-32" style="font-size:38px;">Everybody knows organic UGC works.<br><span class="red">Getting it off the ground is a nightmare.</span></h2>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-tile fi fi-3">
+        <div class="problem-num">01</div>
+        <h4>Creators can be unreliable.</h4>
+        <p>Hundreds of cold DMs. Marketplaces that promise "vetted" talent. Creators continue to disappear before they post or mid-campaign.</p>
+      </div>
+      <div class="problem-tile fi fi-4">
+        <div class="problem-num">02</div>
+        <h4>The ops can bury your team.</h4>
+        <p>Contracts, payments, briefs, live tracking, and account warming. And someone still has to come up with the actual content ideas.</p>
+      </div>
+      <div class="problem-tile fi fi-5">
+        <div class="problem-num">03</div>
+        <h4>3-6 months to build internally.</h4>
+        <p>Heavy logistics for new teams makes proving out this channel slow, so it gets deprioritized. Your competitors end up eating up the mindshare in your niche while you're still figuring out the process.</p>
+      </div>
+      <div class="problem-tile fi fi-6">
+        <div class="problem-num">04</div>
+        <h4>Agencies cost $45K to $90K/quarter.</h4>
+        <p>And when the contract ends, you don't own the creator relationships or infrastructure. You have to restart the channel from zero.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: SOLUTION -->
+<div class="slide" data-slide="4">
+  <div style="max-width:1040px; width:100%;">
+    <div class="text-center">
+      <span class="badge fi fi-1 mb-16">Our Solution</span>
+      <h2 class="fi fi-2 mb-32" style="font-size:32px; max-width:860px; margin-left:auto; margin-right:auto;">GigMax builds your in-house organic UGC program and hands you the keys on <span class="gold">day 15</span>.</h2>
+    </div>
+    <div class="two-col start">
+      <div class="col fi fi-3">
+        <h3 class="mb-16" style="color:var(--text-dim);">You Get</h3>
+        <ul class="check-list">
+          <li><span class="check">&#10003;</span> 5 to 10 highly vetted creators who understand internet culture and won't ghost you.</li>
+          <li><span class="check">&#10003;</span> 12 creative formats / 3 months' worth of creative playbooks unique to your app.</li>
+          <li><span class="check">&#10003;</span> Custom payment structure for your program to meet your goals.</li>
+          <li><span class="check">&#10003;</span> Access to software that tracks videos, creators, and handles payouts.</li>
+          <li><span class="check">&#10003;</span> Everything is built and configured for you with a hand-off training video so you can launch with a click.</li>
+        </ul>
+      </div>
+      <div class="col fi fi-4">
+        <div class="testimonial-box" style="font-style:normal;">
+          <h3 style="color:var(--gold); margin-bottom:12px;">Why This Model?</h3>
+          <p style="color:var(--text); font-size:15px; line-height:1.7;">You own your relationship with your creators, can iterate faster, and never have to pay an agency or retainer again.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: PRICING -->
+<div class="slide" data-slide="5">
+  <div class="text-center" style="max-width:1000px; width:100%;">
+    <h3 class="fi fi-1 mb-8">Pricing</h3>
+    <h2 class="fi fi-2 mb-32" style="font-size:32px;">Three ways to activate organic UGC.<br><span class="gold">Only one is cost-effective, scalable, and yours to own.</span></h2>
+    <table class="comp-table fi fi-3" style="margin:0 auto;">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Agency Retainer</th>
+          <th>UGC Engineer</th>
+          <th class="gold">GigMax Buildout</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-label">Cost</td>
+          <td>$45K - $90K/quarter</td>
+          <td>$100K - $135K/year</td>
+          <td class="gold-bg">$15K - $20K flat</td>
+        </tr>
+        <tr>
+          <td class="row-label">Cost Type</td>
+          <td>Recurring</td>
+          <td>Yearly</td>
+          <td class="gold-bg">One-time</td>
+        </tr>
+        <tr>
+          <td class="row-label">Time to Launch</td>
+          <td>3-4 weeks</td>
+          <td>3-6 months</td>
+          <td class="gold-bg">15 days</td>
+        </tr>
+        <tr>
+          <td class="row-label">You Own the System</td>
+          <td>No. They do.</td>
+          <td>Eventually.</td>
+          <td class="gold-bg">Day 15.</td>
+        </tr>
+        <tr>
+          <td class="row-label">Creators Included</td>
+          <td>Their network</td>
+          <td>Your problem</td>
+          <td class="gold-bg">5-10 vetted creators sourced</td>
+        </tr>
+        <tr>
+          <td class="row-label">Creative Direction</td>
+          <td>Their templates</td>
+          <td>You figure it out</td>
+          <td class="gold-bg">12 format playbooks included</td>
+        </tr>
+        <tr>
+          <td class="row-label">When They Leave</td>
+          <td>Start over</td>
+          <td>Hope they documented it</td>
+          <td class="gold-bg">Playbook stays. Creators stay.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="fi fi-4 mt-32" style="font-size:15px; color:var(--text);">We build your organic UGC program and hand you the keys with instructions.<br>By day 15, your creators are already posting.</p>
+  </div>
+</div>
+
+<!-- SLIDE 7: HOW IT WORKS -->
+<div class="slide" data-slide="6">
+  <div style="max-width:1180px; width:100%;">
+    <div class="text-center">
+      <h3 class="fi fi-1 mb-8">How It Works</h3>
+      <h2 class="fi fi-2 mb-32" style="font-size:34px;">Contract signed. <span class="gold">Live by day 15.</span></h2>
+    </div>
+    <div class="two-col start" style="gap:48px;">
+      <div class="col fi fi-3" style="flex:1.05;">
+        <div class="timeline-v">
+          <div class="tv-step">
+            <div class="tv-num">Step 01</div>
+            <div class="tv-title">Kickoff Call</div>
+            <div class="tv-desc">Align on goals, niche, audience, and content tone.</div>
+          </div>
+          <div class="tv-step">
+            <div class="tv-num">Step 02</div>
+            <div class="tv-title">Creator Recruitment</div>
+            <div class="tv-desc">Source, vet, and onboard 5-10 creators matched to your brand.</div>
+          </div>
+          <div class="tv-step">
+            <div class="tv-num">Step 03</div>
+            <div class="tv-title">Creative Playbook Development</div>
+            <div class="tv-desc">12 unique content formats tailored to your app and audience.</div>
+          </div>
+          <div class="tv-step">
+            <div class="tv-num">Step 04</div>
+            <div class="tv-title">Contracts, Payments, Tracking</div>
+            <div class="tv-desc">Platform setup, payment structures, and accountability tools live.</div>
+          </div>
+          <div class="tv-step">
+            <div class="tv-num">Step 05</div>
+            <div class="tv-title">Handoff with Video Training</div>
+            <div class="tv-desc">Full walkthrough so your team can run it independently from day one.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col fi fi-4" style="align-self:center; flex:1.25;">
+        <div class="img-frame clickable-img">
+          <img src="/pitch/buildouts/assets/Trackr%20Screenshot.png" alt="Dashboard with real-time analytics and creator tracking" loading="eager" decoding="sync" style="image-rendering:auto;">
+        </div>
+        <p style="font-size:12px; color:var(--text-dim); text-align:center; margin-top:12px; letter-spacing:1px; text-transform:uppercase;">Dashboard with real-time analytics and creator tracking</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: CASE STUDY - IVORY MIND -->
+<div class="slide" data-slide="7">
+  <div style="max-width:1000px; width:100%;">
+    <span class="badge fi fi-1 mb-16">Case Study</span>
+    <h2 class="fi fi-2 mb-8" style="font-size:32px;">Ivory Mind</h2>
+    <p class="fi fi-3" style="color:var(--text-dim); font-size:14px; margin-bottom:18px;">AI study tool &middot; 10-day creator delivery.</p>
+    <div class="ivory-stats fi fi-4" style="margin-bottom:18px;">
+      <div class="stat-card"><div class="num">10</div><div class="label">Day Delivery</div></div>
+      <div class="stat-card stat-wide">
+        <div class="num">First <a href="https://www.tiktok.com/@lowkyagirldes/video/7623619165676424479?is_from_webapp=1&amp;sender_device=pc&amp;web_id=7492175323841562158" target="_blank" rel="noopener" class="viral-link">Viral Video</a> <span class="stat-accent">in 3 Weeks</span></div>
+      </div>
+    </div>
+    <div class="testimonial-box fi fi-5" style="max-width:820px; margin:0 auto;">
+      "Raza has been so helpful with getting our UGC program off the ground. He sourced higher-quality creators than we could find on our own and did so in just 10 days. Anytime we needed a replacement, he handled it fast and always gave us detailed info on each creator so we could choose a good fit. Communication was excellent too. He's incredibly responsive and easy to work with. Within three weeks of kicking things off with our creators, we got our first viral video. I'd highly recommend him to any brand looking to build out their own UGC program."
+      <div class="testimonial-author">Rajya Alturi, Ivory Mind</div>
+    </div>
+    <div class="fi fi-6" style="margin-top:24px; display:flex; justify-content:center;">
+      <div class="img-frame clickable-img" style="max-width:820px; width:100%;">
+        <img src="/pitch/buildouts/assets/rajya.png" alt="Ivory Mind testimonial email">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 9: CASE STUDY - a0.dev -->
+<div class="slide" data-slide="8">
+  <div style="max-width:1080px; width:100%; text-align:center;">
+    <span class="badge fi fi-1 mb-16">Case Study</span>
+    <h2 class="fi fi-2 mb-8" style="font-size:32px;">a0.dev</h2>
+    <p class="fi fi-3 mb-24" style="color:var(--text-dim); font-size:14px;">Done-for-you 60-day campaign. AI code editor.</p>
+
+    <div class="stat-row fi fi-4" style="max-width:820px; margin:0 auto;">
+      <div class="stat-card"><div class="num">8.6<span class="unit">M</span></div><div class="label">Views</div></div>
+      <div class="stat-card"><div class="num">810<span class="unit">K</span></div><div class="label">Likes</div></div>
+      <div class="stat-card"><div class="num">9.5<span class="unit">%</span></div><div class="label">Engagement</div></div>
+      <div class="stat-card"><div class="num">757<span class="unit">K</span></div><div class="label">Peak Video</div></div>
+    </div>
+
+    <div class="fi fi-5 mt-20" style="background:var(--bg-card); border:1px solid var(--line); border-radius:10px; padding:14px 20px; max-width:720px; margin:20px auto 0;">
+      <p style="font-size:13px; color:var(--text-dim);">TikTok sign-ups went from <span class="gold" style="font-weight:600;">~20/day to 130+/day</span>. 866 posts from 430 unique videos. Industry-average engagement is 3–5%.</p>
+    </div>
+
+    <div class="case-img-row fi fi-6">
+      <div class="img-frame clickable-img" style="flex:1;">
+        <img src="/pitch/buildouts/assets/a0.dev.png" alt="a0.dev results">
+      </div>
+      <div class="img-frame clickable-img" style="flex:1;">
+        <img src="/pitch/buildouts/assets/a0-case-study.png" alt="a0.dev PostHog analytics">
+      </div>
+    </div>
+
+    <div class="learning-card highlight fi fi-6" style="max-width:820px; margin:24px auto 0; text-align:left;">
+      <div class="learning-title gold">Why This Case Study Matters</div>
+      <p>It shows the impact of high-volume organic UGC when the program is structured effectively: the right creators, the right creative, and the right payment structure.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 10: CASE STUDY - ZENCASTR -->
+<div class="slide" data-slide="9">
+  <div style="max-width:1040px; width:100%; text-align:center;">
+    <span class="badge fi fi-1 mb-16">Case Study</span>
+    <h2 class="fi fi-2 mb-8" style="font-size:34px;">Zencastr</h2>
+    <p class="fi fi-3 mb-32" style="color:var(--text-dim); font-size:14px;">Podcasting platform &middot; 42 creators &middot; international UGC campaign</p>
+
+    <div class="stat-row fi fi-4" style="max-width:880px; margin:0 auto;">
+      <div class="stat-card"><div class="num">1.4<span class="unit">M</span></div><div class="label">Views</div></div>
+      <div class="stat-card"><div class="num">355</div><div class="label">Posts</div></div>
+      <div class="stat-card"><div class="num">150</div><div class="label">Unique Videos</div></div>
+    </div>
+    <div class="stat-row fi fi-5" style="max-width:880px; margin:16px auto 0;">
+      <div class="stat-card"><div class="num"><span class="unit-prefix">$</span>0.7</div><div class="label">CPM</div></div>
+      <div class="stat-card"><div class="num">3.9<span class="unit">%</span></div><div class="label">Engagement</div></div>
+      <div class="stat-card"><div class="num">24.2<span class="unit">K+</span></div><div class="label">Interactions</div></div>
+    </div>
+
+    <div class="learning-card highlight fi fi-6 mt-32" style="max-width:820px; margin:32px auto 0; text-align:left;">
+      <div class="learning-title gold">Why This Case Study Matters</div>
+      <p>Organic UGC isn't a US-only channel. It's a globally emerging way of marketing, the same way influencer marketing first broke out a decade ago. The high-volume UGC playbook travels, so as you push into new markets and grow your app beyond the US, it comes along with you.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 11: NEXT STEPS -->
+<div class="slide" data-slide="10">
+  <div class="text-center" style="max-width:760px;">
+    <h3 class="fi fi-1 mb-8">Next Steps</h3>
+    <h2 class="fi fi-2" style="font-size:38px; margin-bottom:40px;">Let's <span class="gold">Begin</span>.</h2>
+
+    <div class="pricing-card fi fi-3 text-center" style="margin:0 auto;">
+      <p style="font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:2px; margin-bottom:18px;">GigMax Buildout</p>
+      <div class="price-single"><span class="unit-prefix">$</span>15<span class="unit">K</span> &ndash; <span class="unit-prefix">$</span>20<span class="unit">K</span></div>
+      <div class="price-sub">flat, one-time &middot; based on your scope</div>
+      <ul class="includes-list">
+        <li>5 to 10 vetted creators sourced and onboarded</li>
+        <li>12 creative format playbooks</li>
+        <li>Custom creator payment structure</li>
+        <li>Real-time tracking and accountability software</li>
+        <li>Contracts, briefs, and account warming</li>
+        <li>Full handoff with embedded video training</li>
+      </ul>
+      <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--text-dim); letter-spacing:1px; text-transform:uppercase; font-weight:600;">
+        <span class="gold">Your internal UGC program ready by day 15.</span>
+      </div>
+    </div>
+
+    <div class="fi fi-4 mt-32">
+      <p style="font-size:16px; color:var(--text);">Happy to jump on a call to walk through specifics and tailor the buildout to your app, audience, and launch timeline.</p>
+    </div>
+
+    <div class="fi fi-5" style="margin-top:48px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--text-dim); display:flex; justify-content:center; gap:14px; align-items:center; flex-wrap:wrap;">
+      <span style="color:var(--text); font-weight:600;">Raza North</span>
+      <span style="color:var(--line);">&middot;</span>
+      <a href="mailto:razanorthbiz@gmail.com" style="color:var(--gold); text-decoration:none;">razanorthbiz@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- NAVIGATION DOTS -->
+<div class="nav" id="nav"></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-hidden="true">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+  <img id="lightbox-img" alt="">
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const nav = document.getElementById('nav');
+const counter = document.getElementById('counter');
+let current = 0;
+const total = slides.length;
+
+// Create nav dots
+for(let i = 0; i < total; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'nav-dot' + (i===0?' active':'');
+  dot.onclick = () => goTo(i);
+  nav.appendChild(dot);
+}
+
+function updateCounter(n) {
+  counter.textContent = String(n+1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+}
+
+function goTo(n) {
+  if(n < 0 || n >= total || n === current) return;
+  slides.forEach(s => s.classList.remove('active','exit-up'));
+  slides[n].classList.add('active');
+  current = n;
+
+  document.querySelectorAll('.nav-dot').forEach((d,i) => {
+    d.classList.toggle('active', i===n);
+  });
+
+  updateCounter(n);
+
+  // Re-trigger dot visual on thesis slide
+  if(n === 2) populateDots();
+}
+
+updateCounter(0);
+
+// Keyboard nav
+document.addEventListener('keydown', e => {
+  if(document.getElementById('lightbox').classList.contains('open')) return;
+  if(e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goTo(current+1); }
+  if(e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); goTo(current-1); }
+});
+
+// Touch / swipe
+let touchStart = 0;
+document.addEventListener('touchstart', e => { touchStart = e.touches[0].clientX; }, { passive:true });
+document.addEventListener('touchend', e => {
+  const diff = touchStart - e.changedTouches[0].clientX;
+  if(Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+}, { passive:true });
+
+// Lightbox for case-study images
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxClose = document.getElementById('lightbox-close');
+
+function openLightbox(src, alt) {
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || '';
+  lightbox.classList.add('open');
+  lightbox.setAttribute('aria-hidden', 'false');
+}
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  setTimeout(() => { lightboxImg.src = ''; }, 300);
+}
+
+document.querySelectorAll('.clickable-img').forEach(frame => {
+  frame.addEventListener('click', () => {
+    const img = frame.querySelector('img');
+    if(img && img.src) openLightbox(img.src, img.alt);
+  });
+});
+lightbox.addEventListener('click', e => {
+  if(e.target === lightbox || e.target === lightboxImg) closeLightbox();
+});
+lightboxClose.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+});
+
+// Dot visualization for volume slide
+function populateDots() {
+  const small = document.getElementById('dots-small');
+  const large = document.getElementById('dots-large');
+  if(!small || !large) return;
+  small.innerHTML = '';
+  large.innerHTML = '';
+
+  // 3 dots represent 30 posts (1 dot = 10 posts)
+  for(let i = 0; i < 3; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot dot-gray';
+    d.style.animationDelay = (i * 0.04) + 's';
+    small.appendChild(d);
+  }
+
+  // 40 dots represent 400 posts
+  for(let i = 0; i < 40; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot dot-gold';
+    d.style.animationDelay = (i * 0.02) + 's';
+    large.appendChild(d);
+  }
+}
+
+// Initial populate in case slide 3 is opened first
+populateDots();
+</script>
+</body>
+</html>

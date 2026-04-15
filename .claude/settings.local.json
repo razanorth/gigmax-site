@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk 'NR>=471 && NR<=500' /Users/razanorth/Desktop/gigmax-site/pitch/zencastr/index.html)",
+      "Bash(awk 'NR>=500 && NR<=740' /Users/razanorth/Desktop/gigmax-site/pitch/zencastr/index.html)",
+      "Bash(awk 'NR>=740 && NR<=850' /Users/razanorth/Desktop/gigmax-site/pitch/zencastr/index.html)",
+      "WebFetch(domain:gigmax.xyz)",
+      "Bash(curl -o /dev/null -s -w '%{http_code}\\\\n' https://gigmax.xyz/pitch/buildouts/assets/__TRACKED_VAR__)",
+      "Bash(curl -sI https://gigmax.xyz/pitch/buildouts/assets/__TRACKED_VAR__)",
+      "Bash(curl -s \"https://gigmax.xyz/pitch/buildouts/\")",
+      "Bash(curl -sI \"https://gigmax.xyz/pitch/buildouts/assets/raza.png\" \"https://gigmax.xyz/pitch/buildouts/assets/Trackr%20Screenshot.png\")",
+      "Bash(curl -sI \"https://gigmax.xyz/pitch/buildouts\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} -> %{redirect_url}\\\\n\" \"https://gigmax.xyz/pitch/buildouts\")",
+      "Bash(npx --version)",
+      "Bash(npx puppeteer:*)",
+      "Bash(npx puppeteer@latest node screenshot-slide1.mjs)",
+      "Bash(node:*)",
+      "Bash(npm install:*)",
+      "Bash(vercel deploy:*)",
+      "Bash(/opt/homebrew/bin/vercel deploy:*)",
+      "Bash(npm list *)",
+      "Read(//opt/homebrew/**)",
+      "Read(//private/tmp/**)",
+      "Bash(npm init *)",
+      "Bash(curl *)",
+      "Bash(vercel --version)",
+      "Bash(git -C /Users/razanorth/Desktop/gigmax-site status --porcelain)",
+      "Bash(vercel *)"
+    ]
+  }
+}
