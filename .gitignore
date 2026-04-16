@@ -1,2 +1,10 @@
+.DS_Store
+.claude/
+node_modules
+.next
+dist
+build
 .vercel
-.env*.local
+.env
+.env.local
+.env.production

@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: #F4EFE4;
+  color: #2A251C;
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  @apply mx-auto w-full max-w-content px-6 md:px-10;
+}
+
+.eyebrow {
+  @apply text-[11px] uppercase tracking-[0.18em] text-ink-dim;
+}
+
+.placeholder {
+  @apply inline-flex items-center rounded-sm border border-dashed border-ink-dim/50 bg-card-alt/60 px-1.5 py-0.5 text-[11px] uppercase tracking-wider text-ink-dim;
+}
