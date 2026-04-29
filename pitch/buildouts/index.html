@@ -982,6 +982,20 @@ document.addEventListener('touchend', e => {
   if(Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
 }, { passive:true });
 
+// Click-anywhere navigation: right half advances, left half goes back.
+// Ignore clicks on interactive elements so links, videos, dots, and the lightbox keep working.
+const INTERACTIVE_SELECTOR = 'a, button, input, textarea, select, label, video, audio, iframe, .nav-dot, .clickable-img, .lightbox, .lightbox *';
+document.addEventListener('click', e => {
+  if(lightbox.classList.contains('open')) return;
+  if(e.target.closest(INTERACTIVE_SELECTOR)) return;
+  // Ignore if user is selecting text
+  const sel = window.getSelection && window.getSelection();
+  if(sel && sel.toString().length > 0) return;
+  const x = e.clientX;
+  if(x < window.innerWidth / 2) goTo(current - 1);
+  else goTo(current + 1);
+});
+
 // Lightbox for case-study images
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
